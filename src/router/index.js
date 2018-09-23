@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import SearchCity from '@/components/SearchCity/SearchCity'
+import SearchWeather from '@/components/SearchWeather/SearchWeather'
 
 Vue.use(Router)
 
@@ -8,8 +9,10 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      components: {
+        'SearchCity': SearchCity,
+        'SearchWeather': SearchWeather
+      }
     }
   ]
 })
