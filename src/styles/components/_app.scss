@@ -1,0 +1,13 @@
+#app {
+  margin: 0;
+  height: $full-screen;
+  ::-webkit-scrollbar {
+    width: $scroll-width;
+    background-color: fade_out($color-01, 1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: $scroll-width;
+    background-color: $color-scroll;
+  }
+}

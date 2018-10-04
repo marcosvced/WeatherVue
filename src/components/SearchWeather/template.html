@@ -1,4 +1,43 @@
-<div class="search-weather">
-  <h1>{{ getTemperature }}</h1>
-  <button @click="requestWeather">Click weather</button>
-</div>
+<section class="search-weather column is-4">
+  <div class="img-bg" :class="{'day': isDay, 'night': !isDay}">
+    <div class="date-cnt columns">
+      <div class="date column is-6">
+        <h1 class="title has-text-white">
+          {{day}}, {{date}}
+        </h1>
+        <p class="subtitle has-text-grey-lighter">
+          {{month}} {{year}}
+        </p>
+      </div>
+      <div class="column is-6">
+        <p class="subtitle time has-text-white has-text-right">
+          {{hour}}:{{minutes}}
+        </p>
+      </div>
+    </div>
+    <div class="temperature ">
+      <div class="columns">
+        <div class="temperature-bar">
+          <div class="bar" :style="{height: barTemperature + '%'}">
+            <div class="arrow"></div>
+          </div>
+        </div>
+        <div class="weather-conditions column">
+          <div class="icon weather" :class="{'day': isDay, 'night': !isDay}"></div>
+          <h1 class="title has-text-white has-text-weight-light">{{ getTemperature }}</h1>
+          <!--O servicio non devolve as condición meteorológicas-->
+          <p class="subtitle has-text-white" v-if="!isDay">Mostly Cloudy Night</p>
+          <p class="subtitle has-text-white" v-if="isDay">Mostly Cloudy</p>
+
+        </div>
+      </div>
+      <div class="position columns" v-show="getName !== ''">
+        <div class="icon marker"></div>
+        <div class="subtitle has-text-grey-lighter">
+          {{getName}}, {{getCountry}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

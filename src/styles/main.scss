@@ -1,2 +1,8 @@
-@import "common";
-@import "./components/app";
+@import "variables";
+@import "palette";
+@import "animations";
+
+@import "~bulma/bulma";
+@import "components/app";
+@import "components/uiSelect";
+@import "components/weather";

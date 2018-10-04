@@ -1,0 +1,33 @@
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+.hide {
+  animation: hide .5s forwards;
+}
+
+@keyframes show {
+  0% {
+    display: block;
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+.show {
+  animation: show .5s forwards;
+}

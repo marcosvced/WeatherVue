@@ -1,6 +1,7 @@
 // initial state
 const state = {
   name: '',
+  country: '',
   cardinalDirections: {
     south: 0,
     north: 0,
@@ -14,11 +15,12 @@ const getters = {
   getName: (state) => {
     return state.name
   },
-
+  getCountry: (state) => {
+    return state.country
+  },
   getCardinalDirections: (state) => {
     return state.cardinalDirections
   },
-
   getSouth: (state) => {
     return state.cardinalDirections.south
   },
@@ -38,8 +40,11 @@ const mutations = {
   setName: (state, name) => {
     state.name = name
   },
+  setCountry: (state, country) => {
+    state.country = country
+  },
   setCardinalDirections (state, cardinalPoints) {
-    // mutate state
+    delete cardinalPoints.accuracyLevel
     state.cardinalDirections = cardinalPoints
   }
 }

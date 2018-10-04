@@ -14,9 +14,11 @@ const getters = {
 const mutations = {
   setTemperature: (state, cities) => {
     let totalTemperature = 0
-    cities.forEach(item => {
-      totalTemperature += parseInt(item.temperature)
-    })
+    if (cities.length > 0) {
+      cities.forEach(item => {
+        totalTemperature += parseInt(item.temperature)
+      })
+    }
     state.temperature = totalTemperature / cities.length
   },
   setCardinalDirections (state, cardinalPoints) {

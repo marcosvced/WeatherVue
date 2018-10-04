@@ -1,0 +1,25 @@
+.ui-select {
+  .field {
+    margin-bottom: 0;
+    position: relative;
+  }
+  .dropdown-menu {
+    display: block;
+    &.column {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .dropdown-content {
+      max-height: $dropdown-height;
+      overflow-y: auto;
+      overflow-x: hidden;
+      a {
+        span {
+          &.subtitle {
+            font-size: $font + .1;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,18 @@
-<div class="search-city">
-  <h1>{{ getCardinalDirections }}</h1>
-  <!--<select v-model="selected">-->
-    <!--<option disabled value="">Please select one</option>-->
-    <!--<option>A</option>-->
-    <!--<option>B</option>-->
-    <!--<option>C</option>-->
-  <!--</select>-->
+<section class="search-city column is-8">
+  <div class="column is-4 is-offset-8">
+    <uiSelect :options="cityPlace" :model="searching" :isLoading="isLoading" @onInput="commitCityName" @onSelect="saveSelectedCity"></uiSelect>
+  </div>
+  <ul>
+    <li v-for="city in cities">
+      <div class="flex">
+        <span class="name">
+          {{city.key}},
+        </span>
+        <span class="country">
+         {{city.value}}
+        </span>
+      </div>
+    </li>
+  </ul>
   <button @click="requestGeoNames">Click City</button>
-</div>
+</section>

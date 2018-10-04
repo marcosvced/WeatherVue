@@ -1,0 +1,25 @@
+<div class="ui-select">
+  <div class="field column is-12">
+    <div :class="[{'is-loading': isLoading},'control']">
+      <input class="input"
+             type="text"
+             placeholder="Find a place"
+             :value="model"
+             @input="updateMessage"
+             @keyup.delete="deleteMessage"
+             @focus="show = true"
+             @blur="show = false"
+      >
+    </div>
+    <div :class="[{'show': show, 'hide': !show},'dropdown-menu column is-12']">
+      <div class="dropdown-content">
+        <a class="dropdown-item has-text-centered" v-if="options.length === 0">
+          <span>Nothing to show</span>
+        </a>
+        <a class="dropdown-item" v-for="item, index in options" @click="clickEvent(index)">
+          <span class="subtitle">{{ item.key }},</span> <span>{{item.value}}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

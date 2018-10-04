@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <router-view class="view one" name="SearchCity"></router-view>
-    <router-view class="view two" name="SearchWeather"></router-view>
+  <div id="app" class="columns">
+    <router-view name="SearchWeather"></router-view>
+    <router-view name="SearchCity"></router-view>
   </div>
 </template>
 
