@@ -2,9 +2,26 @@
   .field {
     margin-bottom: 0;
     position: relative;
+    .control {
+      display: flex;
+      align-items: center;
+      border: 1px solid $color-input;
+      padding-left: $pdd-gap;
+      border-radius: $radius;
+      transition: all .2s cubic-bezier(.68, -.55, .265, 1.55);
+      .input {
+        border: 0;
+        box-shadow: none;
+        text-transform: capitalize;
+        &.is-medium {
+          font-size: $font;
+          padding-top: $pdd-gap + .5;
+          padding-bottom: $pdd-gap + .5;
+        }
+      }
+    }
   }
   .dropdown-menu {
-    display: block;
     &.column {
       margin-top: 0;
       padding-top: 0;
@@ -13,6 +30,9 @@
       max-height: $dropdown-height;
       overflow-y: auto;
       overflow-x: hidden;
+      border: 1px solid $color-input;
+      border-radius: $radius;
+      box-shadow: none;
       a {
         span {
           &.subtitle {

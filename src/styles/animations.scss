@@ -11,6 +11,7 @@
     display: none;
   }
 }
+
 .hide {
   animation: hide .5s forwards;
 }
@@ -28,6 +29,7 @@
     opacity: 1;
   }
 }
+
 .show {
   animation: show .5s forwards;
 }

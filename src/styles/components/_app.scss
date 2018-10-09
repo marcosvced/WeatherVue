@@ -1,6 +1,16 @@
 #app {
-  margin: 0;
   height: $full-screen;
+  overflow: hidden;
+  &.columns {
+    margin: 0;
+  }
+  .columns {
+    margin: 0 !important;
+  }
+  span {
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;;
+  }
+
   ::-webkit-scrollbar {
     width: $scroll-width;
     background-color: fade_out($color-01, 1);
@@ -10,4 +20,5 @@
     border-radius: $scroll-width;
     background-color: $color-scroll;
   }
+
 }

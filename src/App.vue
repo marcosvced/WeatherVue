@@ -2,6 +2,7 @@
   <div id="app" class="columns">
     <router-view name="SearchWeather"></router-view>
     <router-view name="SearchCity"></router-view>
+    <!--<router-view name="Maps"></router-view>-->
   </div>
 </template>
 

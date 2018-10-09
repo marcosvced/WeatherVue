@@ -7,7 +7,9 @@ const state = {
     north: 0,
     east: 0,
     west: 0
-  }
+  },
+  lat: 0,
+  lng: 0
 }
 
 // getters
@@ -32,7 +34,14 @@ const getters = {
   },
   getWest: (state) => {
     return state.cardinalDirections.west
+  },
+  getLat: (state) => {
+    return state.lat
+  },
+  getLng: (state) => {
+    return state.lng
   }
+
 }
 
 // mutations
@@ -43,9 +52,15 @@ const mutations = {
   setCountry: (state, country) => {
     state.country = country
   },
-  setCardinalDirections (state, cardinalPoints) {
+  setCardinalDirections: (state, cardinalPoints) => {
     delete cardinalPoints.accuracyLevel
     state.cardinalDirections = cardinalPoints
+  },
+  setLng: (state, lng) => {
+    state.lng = lng
+  },
+  setLat: (sate, lat) => {
+    state.lat = lat
   }
 }
 

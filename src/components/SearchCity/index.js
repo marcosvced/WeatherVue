@@ -1,4 +1,5 @@
 import uiSelect from '../ui/select/UiSelect'
+import googleMaps from '../GoogleMaps/GoogleMaps'
 import {mapMutations, mapGetters} from 'vuex'
 
 export default {
@@ -8,25 +9,30 @@ export default {
       cities: [],
       cityPlace: [],
       searching: '',
-      isLoading: false
+      isLoading: false,
+      open: false
     }
   },
   components: {
-    uiSelect
+    uiSelect,
+    googleMaps
   },
 
   computed: {
     ...mapGetters('city', {
       getName: 'getName',
       getCountry: 'getCountry',
-      getCardinalDirections: 'getCardinalDirections'
+      getCardinalDirections: 'getCardinalDirections',
+      getLat: 'getLat'
     })
   },
   methods: {
     ...mapMutations('city', {
-      'setName': 'setName',
-      'setCountryName': 'setCountryName',
-      'setCardinalDirections': 'setCardinalDirections'
+      setName: 'setName',
+      setCountry: 'setCountry',
+      setCardinalDirections: 'setCardinalDirections',
+      setLat: 'setLat',
+      setLng: 'setLng'
     }),
 
     /**
@@ -68,7 +74,9 @@ export default {
             'north': place.bbox.north,
             'south': place.bbox.south,
             'west': place.bbox.west,
-            'east': place.bbox.east
+            'east': place.bbox.east,
+            'lat': place.lat,
+            'lng': place.lng
           }
           this.cityPlace.push(places)
         }
@@ -106,12 +114,32 @@ export default {
         west: selectedCity.west
       }
       this.$store.commit('city/setCardinalDirections', cardinalsPoints)
+      this.$store.commit('city/setLng', selectedCity.lng)
+      this.$store.commit('city/setLat', selectedCity.lat)
 
       // Add selected city as input value
       this.searching = this.getName
       this.addToLocalStorage(selectedCity)
     },
 
+    /**
+     * Select a city of cities history
+     * @param e
+     */
+    selectHistoryCity (e) {
+      const selectedCity = this.cities[e]
+      this.$store.commit('city/setName', selectedCity.key)
+      this.$store.commit('city/setCountry', selectedCity.value)
+      const cardinalsPoints = {
+        south: selectedCity.south,
+        north: selectedCity.north,
+        east: selectedCity.east,
+        west: selectedCity.west
+      }
+      this.$store.commit('city/setCardinalDirections', cardinalsPoints)
+      this.$store.commit('city/setLng', selectedCity.lng)
+      this.$store.commit('city/setLat', selectedCity.lat)
+    },
     /**
      *  Add the value to local storage
      * @param value

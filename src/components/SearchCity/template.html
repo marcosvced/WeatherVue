@@ -1,18 +1,119 @@
 <section class="search-city column is-8">
   <div class="column is-4 is-offset-8">
-    <uiSelect :options="cityPlace" :model="searching" :isLoading="isLoading" @onInput="commitCityName" @onSelect="saveSelectedCity"></uiSelect>
+    <uiSelect :options="cityPlace" :model="searching" :isLoading="isLoading" @onInput="commitCityName"
+              @onSelect="saveSelectedCity"></uiSelect>
   </div>
-  <ul>
-    <li v-for="city in cities">
-      <div class="flex">
-        <span class="name">
-          {{city.key}},
-        </span>
-        <span class="country">
-         {{city.value}}
-        </span>
+  <div class="ctn column is-10 is-offset-1 is-paddingless">
+    <div class="is-12 ctn-statistics">
+      <h2 class="title has-text-weight-light">Statistics</h2>
+      <hr class="hr">
+      <div class="statistics columns">
+        <div class="column is-one-fifth has-text-centered">
+          <div class="ic-droplet"></div>
+          <span>17%</span>
+        </div>
+        <div class="column is-one-fifth has-text-centered">
+          <div class="ic-sunrise"></div>
+          <span>8:13</span>
+        </div>
+        <div class="column is-one-fifth has-text-centered">
+          <div class="ic-sunset"></div>
+          <span>21:07</span>
+        </div>
+        <div class="column is-one-fifth has-text-centered">
+          <div class="ic-wind"></div>
+          <span>24 km/h</span>
+        </div>
+        <div class="column is-one-fifth has-text-centered">
+          <div class="ic-cloud"></div>
+          <span>37%</span>
+        </div>
       </div>
-    </li>
-  </ul>
-  <button @click="requestGeoNames">Click City</button>
+    </div>
+    <div class="forecast-history columns">
+      <div class="column is-6">
+        <h2 class="title has-text-weight-light">Forecast</h2>
+        <div class="header columns">
+          <div class="weekly column is-2 has-text-weight-semibold">Weekly</div>
+          <div class="hourly column is-2">Hourly</div>
+        </div>
+        <hr class="hr">
+        <div class="body">
+          <div class="hour columns">
+            <div class="column time">8:00</div>
+            <div class="column temperature">10ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">9:00</div>
+            <div class="column temperature">10ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">10:00</div>
+            <div class="column temperature">13ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">11:00</div>
+            <div class="column temperature">15.2ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">12:00</div>
+            <div class="column temperature">17ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">13:00</div>
+            <div class="column temperature">17ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">14:00</div>
+            <div class="column temperature">20ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">15:00</div>
+            <div class="column temperature">21ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">16:00</div>
+            <div class="column temperature">21ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">17:00</div>
+            <div class="column temperature">20ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">18:00</div>
+            <div class="column temperature">19ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">19:00</div>
+            <div class="column temperature">18.5ºC</div>
+          </div>
+          <div class="hour columns">
+            <div class="column time">20:00</div>
+            <div class="column temperature">16.7ºC</div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-6">
+        <h2 class="title has-text-weight-light">History of cites</h2>
+        <div class="history-subtitle column">Pick some city</div>
+        <hr class="hr">
+        <ul>
+          <li v-for="city, index in cities">
+            <div class="flex" @click="selectHistoryCity(index)">
+               <span class="name">
+                  {{city.key}},
+               </span>
+              <span class="country">
+                  {{city.value}}
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div :class="[{'open':open}, 'map ctn column is-10 is-offset-1']">
+    <div class="open btn" @click="open = !open"></div>
+    <googleMaps></googleMaps>
+  </div>
 </section>

@@ -71,10 +71,6 @@
         .icon {
           height: 20px;
           width: 15px;
-          &.marker {
-            background: url(assets/icons/marker.png) no-repeat center;
-            background-size: cover;
-          }
         }
         .subtitle {
           margin-left: $pdd-gap;

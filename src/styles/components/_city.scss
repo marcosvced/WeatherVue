@@ -1,0 +1,86 @@
+.search-city {
+  position: relative;
+  .ctn-statistics {
+    .statistics {
+      [class^="ic-"] {
+        font-size: $font * 2;
+        margin-bottom: $pdd-gap;
+      }
+    }
+  }
+  .forecast-history {
+    .weekly {
+      position: relative;
+      padding-left: 0;
+      &:before {
+        content: '';
+        height: 5px;
+        width: 100%;
+        position: absolute;
+        background-color: $color-input;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    .hr {
+      margin-top: 0;
+    }
+    .body {
+      max-height: 35vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .history-subtitle {
+      position: relative;
+      padding-left: 0;
+    }
+    ul {
+      max-height: 35vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      li {
+        cursor: pointer;
+        padding-top: $pdd-gap;
+        padding-bottom: $pdd-gap;
+        padding-left: $pdd-gap;
+        margin-right: $pdd-gap;
+        .name {
+          font-size: $font + .2;
+        }
+        &:hover {
+          background-color: hsl(0, 0%, 96%);
+        }
+      }
+    }
+  }
+  .map.ctn {
+    height: 100%;
+    position: absolute;
+    bottom: -90%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    transition: bottom .7s;
+    &.open {
+      bottom: -20%;
+    }
+    .btn {
+      height: 7px;
+      width: 70px;
+      border-radius: 7px;
+      background: hsl(0, 0%, 71%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 35px;
+      margin: auto;
+      z-index: 5;
+      cursor: pointer;
+    }
+    .google-maps {
+      border-radius: $radius;
+      overflow: hidden;
+      border: 1px solid $color-input;
+    }
+  }
+}
